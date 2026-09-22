@@ -528,3 +528,16 @@ const typeGroups={
 plants.forEach((p,i)=>{p.specimenSize=specimenSizes[i];p.sizes=[p.specimenSize];p.types=Object.entries(typeGroups).filter(([,ids])=>ids.includes(p.id)).map(([type])=>type);if(!p.types.length)p.types=['관엽식물'];p.sceneScale=[.72,.95,1.2,.52][p.specimenSize];p.plantScale=[.72,.96,1.10,.36][p.specimenSize];});
 export function filterPlants(list,f){return list.filter(p=>(p.name+' '+p.english).toLowerCase().includes(f.query.trim().toLowerCase())&&(!f.light.length||f.light.some(v=>p.light.includes(v)))&&(!f.difficulty.length||f.difficulty.includes(p.difficulty))&&(!f.size.length||f.size.some(v=>p.sizes.includes(v)))&&(!f.features.length||f.features.some(v=>p.features.includes(v)))&&(!f.types.length||f.types.some(v=>p.types.includes(v))));}
 export function plantGeometry(p){const k=p.plantScale,root=p.root??[.93,.945,.942,.965,.91,.55,.952,.952,.90,.93,.957,.965][p.atlas],x=p.rootX??(!p.sheet&&p.atlas===2?.465:!p.sheet&&p.atlas===5?.47:.5);return {width:k*100,top:(1.012-root*k)/1.37*100,left:(.5-x*k)*100,scene:p.sceneScale};}
+
+// Measured opaque base of each existing pot sprite (normalized cell coordinates).
+const potBases=[[.8906,.5098,.3594],[.8945,.498,.4805],[.8926,.5049,.3652],[.8223,.5117,.4961],[.8164,.4971,.377],[.8262,.5117,.4258],[.8986,.5034,.3986],[.8716,.5045,.3363],[.8964,.4977,.395],[.8694,.5034,.3221],[.8894,.5045,.3468],[.8668,.5023,.7336],[.9187,.4989,.3386],[.8939,.5023,.464]];
+pots.forEach((pot,i)=>{[pot.base,pot.baseCenter,pot.baseWidth]=potBases[i];});
+
+// Appreciation groups supplement the existing care traits; some plants belong to several.
+plants.forEach(p=>{
+    const tags=[];
+    if(p.types.includes('꽃식물'))tags.push('꽃 감상');
+    if(p.types.includes('열매식물'))tags.push('열매 감상');
+    if(p.types.some(t=>['관엽식물','양치식물','허브','분재·침엽식물'].includes(t)))tags.push('잎 감상');
+    p.features=[...new Set([...p.features,...tags])];
+});

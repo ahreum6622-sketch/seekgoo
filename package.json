@@ -1,1 +1,0 @@
-{"name":"seekgoo","version":"0.7.0","private":true,"type":"module","engines":{"node":">=22"},"scripts":{"start":"node --env-file-if-exists=.env.local server/dev.mjs","build":"node scripts/build.mjs","test":"node tests/recommendation.test.js && node tests/state.test.js && node tests/api.test.js && node tests/render-smoke.cjs && node tests/catalog.test.js"}}

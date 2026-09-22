@@ -1,2 +1,0 @@
-import {mkdir,cp,rm} from 'node:fs/promises';
-const root=new URL('../',import.meta.url),out=new URL('../public/',import.meta.url);await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});for(const name of ['index.html','css','js','assets'])await cp(new URL(name,root),new URL(name,out),{recursive:true});console.log('Public frontend built; api/analyze-space.js remains server-only.');

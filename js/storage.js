@@ -5,8 +5,9 @@ export function migrate(value){
  if(!value||typeof value!=='object')return fresh();
  if(value.version===3){const s=value.space;return migrate({...fresh(),careProfile:value.careProfile,spaces:s?[s]:[],activeSpaceId:s?.id||null,onboardingSeen:!!value.careProfile,savedPlantIds:value.savedPlantIds||[],comparePlantIds:value.comparePlantIds||[],savedCombinations:value.savedCombinations||[],exploreFilters:value.exploreFilters||fresh().exploreFilters});}
  if(value.version!==4)return fresh();
- const result={...fresh(),...value};for(const key of ['exploreFilters','visualizerFilters']){const raw=value[key]||{};result[key]=emptyFilters();result[key].query=typeof raw.query==='string'?raw.query:'';for(const field of ['light','difficulty','size','features','types'])result[key][field]=Array.isArray(raw[field])?raw[field]:[];}result.spaces=Array.isArray(value.spaces)?value.spaces.slice(0,4):[];
+ const result={...fresh(),...value};for(const key of ['exploreFilters','visualizerFilters']){const raw=value[key]||{};result[key]=emptyFilters();result[key].query=typeof raw.query==='string'?raw.query:'';for(const field of ['light','difficulty','size','features','types'])result[key][field]=Array.isArray(raw[field])?raw[field]:[];}for(const key of ['exploreFilters','visualizerFilters'])result[key].types=result[key].types.filter(v=>!['열매식물','꽃식물'].includes(v));result.spaces=Array.isArray(value.spaces)?value.spaces.slice(0,4):[];
  if(!result.spaces.some(s=>s.id===result.activeSpaceId))result.activeSpaceId=result.spaces[0]?.id||null;
+ result.comparePlantIds=[...new Set(Array.isArray(value.comparePlantIds)?value.comparePlantIds:[])].filter(id=>/^p(0[1-9]|[1-3][0-9]|4[0-2])$/.test(id)).slice(0,2);
  return result;
 }
 export function read(){try{const current=localStorage.getItem(KEY);return migrate(JSON.parse(current||localStorage.getItem(LEGACY_KEY)||'null'));}catch{return fresh();}}

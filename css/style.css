@@ -123,3 +123,28 @@
 .compare-name{color:#173c30;font-weight:bold;text-decoration:none}.comparison-table .btn.secondary{padding:8px 4px;font-size:12px;min-height:40px}
 
 .cards .gallery-card.is-expanded .cardtop{aspect-ratio:auto;height:280px}
+
+/* v14 direct navigation and shared transparent pot sprites */
+.menu-toggle{width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;gap:5px;border:0;background:none;padding:10px}.menu-toggle span{height:2px;width:24px;background:var(--primary);border-radius:2px}
+.quick-menu{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 28px}.quick-menu a,.quick-menu button{border:0;background:none;font-size:12px;text-align:center;display:flex;align-items:center;flex-direction:column;gap:8px;padding:0;color:var(--primary)}.quick-menu span{display:grid;place-items:center;width:50px;height:50px;border-radius:18px;background:#e8ece2;font-size:24px}.quick-menu svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.5}.quick-menu a:nth-child(2) span{background:#ebe7f4}
+.home-banner{display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:18px;background:#e8e5f1;margin:24px 0;gap:10px}.home-banner>span:first-child{flex:1;min-width:0}.home-banner small,.home-banner strong,.home-banner>span>span{display:block}.home-banner strong{font-size:18px;color:#294c3b;margin:6px 0}.home-banner>span>span{font-size:12px;color:#626575}.banner-pot{width:80px;flex-shrink:0}.banner-pot .pot-thumb{width:80px;height:80px}
+#all-menu{width:min(100% - 32px,398px);max-height:85dvh;padding:24px;border:0;border-radius:22px;background:var(--bg);color:var(--text)}#all-menu::backdrop{background:#172a2366;backdrop-filter:blur(3px)}.menu-heading{display:flex;align-items:center;justify-content:space-between}.menu-heading h2{margin:0}#all-menu h3{font-size:13px;color:var(--muted);margin:24px 0 8px}.menu-link,.btn.menu-link{width:100%;display:block;min-height:44px;text-align:left;padding:12px 0;border:0;border-bottom:1px solid var(--border);background:none;color:var(--primary);font-size:16px}
+.pot-thumb{display:block;width:74px;height:74px;aspect-ratio:1;flex-shrink:0;background-color:transparent}
+.pot-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.pot-catalog button{border:1px solid var(--border);border-radius:18px;background:#eeeee6;padding:12px;min-width:0;text-align:left}.pot-catalog .pot-thumb{width:100%;height:auto;aspect-ratio:1}.pot-catalog strong{display:block;font-size:14px;margin-top:8px}.pot-catalog small{font-size:12px}
+.canvas .composition-objects{filter:none}
+.canvas .pot-layer{filter:brightness(var(--scene-brightness,1)) saturate(var(--scene-saturation,1)) contrast(var(--scene-contrast,1))}
+.canvas .plant-layer{filter:brightness(var(--leaf-brightness,var(--scene-brightness,1))) saturate(var(--scene-saturation,1)) contrast(var(--scene-contrast,1))}
+.tone-defs{position:absolute;pointer-events:none}
+
+#all-menu{overscroll-behavior:contain}
+
+/* v15: the catalog uses the same plant cutouts and white pot as placement. */
+.plant-portrait{display:block;position:relative;width:100%;aspect-ratio:1;overflow:hidden;background:#eeeee6;border-radius:inherit;isolation:isolate;pointer-events:none}
+.plant-portrait .composition{left:50%!important;top:50%!important;width:68%!important;pointer-events:none;cursor:inherit}
+.gallery-photo .plant-portrait{height:100%;aspect-ratio:auto}
+.cards .gallery-card.is-expanded .plant-portrait{width:280px;max-width:100%;height:280px;margin:auto}
+.cards .gallery-card .cardtop{background:#eeeee6}
+.selector .plant-portrait{width:74px;height:88px;aspect-ratio:auto;margin-bottom:8px;border-radius:7px}
+.selector .plant-portrait .composition{width:78%!important}
+.podium-plant .plant-portrait{border-radius:14px;margin:12px 0}
+.compare-photo .plant-portrait{border-radius:12px}

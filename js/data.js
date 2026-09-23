@@ -3,7 +3,7 @@ export const difficulties=['매우 쉬움','쉬움','보통','어려움'];
 export const sizes=['소형','중형','대형','초소형'];
 export const sizeOrder=[3,0,1,2];
 export const sizePreferenceValues=[4,0,1,2,3];
-export const plantTypes=['관엽식물','열매식물','꽃식물','식충식물','선인장·다육식물','양치식물','허브','분재·침엽식물'];
+export const plantTypes=['관엽식물','식충식물','선인장·다육식물','양치식물','허브','분재·침엽식물'];
 const rows=[
 ['필레아','Pilea peperomioides',0,[1],1,1,[0,1],'동전 같은 잎이 만드는 작은 풍경','흙 표면이 마른 뒤 물을 주세요','직사광선을 피하고 밝은 창가에 두세요'],
 ['필로덴드론','Philodendron',1,[1,2],1,1,[1],'자유롭게 뻗는 잎의 실루엣','겉흙을 확인하고 마르면 물을 주세요','밝은 간접광과 부드러운 통풍을 좋아해요'],
@@ -515,7 +515,7 @@ export const questions=[['experience','식물을 키워본 적이 있나요?',['
 
 // Display sizes describe the supplied catalog specimens, not species maximum height.
 // Existing size IDs 0/1/2 and profile 3=any stay stable; profile 4 means tiny (plant size 3).
-const specimenSizes=[0,1,1,1,2,0,1,2,0,1,0,2,2,1,0,1,1,3,3,1,0,0,0,3,0,3,3,2,0,0,0,0,0,0,1,0,0,3,2,0,0,0];
+const specimenSizes=[0,1,1,1,2,0,1,2,0,1,0,2,2,1,0,1,1,3,3,3,0,0,0,3,0,3,3,2,0,0,0,0,0,0,1,0,0,3,2,0,0,0];
 const typeGroups={
  '열매식물':['p16','p17','p28'],
  '꽃식물':['p15','p32','p33','p34','p37','p41','p42'],
